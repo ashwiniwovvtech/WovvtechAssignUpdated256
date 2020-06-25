@@ -79,24 +79,27 @@ export default class Newspage extends Component {
                     style={styles.list}
                     data={this.state.data}
                     renderItem={({item})=> 
-                    <View style={styles.listItem}>
-                        <View style={{borderBottomColor:'black', borderBottomWidth:1, marginBottom:3}}>
-                            <Text>{item.title}</Text>
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('RelatedNews')}>
+                        <View style={styles.listItem}>
+                            <View style={{borderBottomColor:'black', borderBottomWidth:1, marginBottom:3}}>
+                                <Text>{item.title}</Text>
+                            </View>
+                            <View style={{flexDirection:'row'}}>
+                                <Text>Url : </Text>
+                                <Text style={{width:350}} numberOfLines={2}>{item.url}</Text>
+                            </View>
+                            <View style={{flexDirection:'row'}}>
+                                <Text>CreateAt : </Text>
+                                <Text>{item.created_at}</Text>
+                            </View>
+                            <View style={{flexDirection:'row'}}>
+                                <Text>Author : </Text>
+                                <Text>{item.author}</Text>
+                            </View>
                         </View>
-                        <View style={{flexDirection:'row'}}>
-                            <Text>Url : </Text>
-                            <Text style={{width:350}} numberOfLines={2}>{item.url}</Text>
-                        </View>
-                        <View style={{flexDirection:'row'}}>
-                            <Text>CreateAt : </Text>
-                            <Text>{item.create_at}</Text>
-                        </View>
-                        <View style={{flexDirection:'row'}}>
-                            <Text>Author : </Text>
-                            <Text>{item.author}</Text>
-                        </View>
-                    </View>
-                }
+                    
+                    </TouchableOpacity>
+                    }
                 ListFooterComponent={
                     this.renderFooter.bind(this)
                 }
